@@ -17,7 +17,11 @@ angular.module('ethExplorer')
             updateTXList();
             updateStats();
             getHashrate();
-            $scope.$apply();
+            setTimeout(function() {
+              $scope.message = 'Fetched after two seconds';
+              console.log('message:' + $scope.message);
+              $scope.$apply();
+            }, 2000);
           }
         });
 
