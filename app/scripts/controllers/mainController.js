@@ -12,14 +12,14 @@ angular.module('ethExplorer')
 
         web3.eth.filter("latest", function(error, result){
           if (!error) {
-            getETHRates();
-            updateBlockList();
-            updateTXList();
-            updateStats();
-            getHashrate();
             setTimeout(function() {
               $scope.message = 'Fetched after two seconds';
               console.log('message:' + $scope.message);
+              getETHRates();
+              updateBlockList();
+              updateTXList();
+              updateStats();
+              getHashrate();
               $scope.$apply();
             }, 2000);
           }
