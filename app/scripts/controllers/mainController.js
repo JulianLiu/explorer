@@ -10,20 +10,13 @@ angular.module('ethExplorer')
         updateStats();
         getHashrate();
 
-        web3.eth.filter("latest", function(error, result){
-          if (!error) {
-            setTimeout(function() {
-              $scope.message = 'Fetched after two seconds';
-              console.log('message:' + $scope.message);
-              getETHRates();
-              updateBlockList();
-              updateTXList();
-              updateStats();
-              getHashrate();
-              $scope.$apply();
-            }, 2000);
-          }
-        });
+        setInterval(function() {
+          updateBlockList();
+          updateTXList();
+          updateStats();
+          getHashrate();
+          $scope.$apply();
+        }, 7000);
 
         $scope.processRequest= function(){
             var requestStr = $scope.ethRequest;
